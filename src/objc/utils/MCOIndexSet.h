@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 MailCore. All rights reserved.
 //
 
+
 #ifndef MAILCORE_MCOINDEXSET_H
 
 #define MAILCORE_MCOINDEXSET_H
