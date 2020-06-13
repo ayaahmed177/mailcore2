@@ -1,0 +1,17 @@
+Script location:
+mailcore2/scripts/include.sh/build-dep.sh
+
+Changes below:
+
+Lines 16, 171, 318: Replace
+
+version="`defaults read "$versions_path" "$name" 2>/dev/null`"
+with
+
+version="`/usr/libexec/PlistBuddy -c \"print :"$name"\" "$versions_path"  2>/dev/null`"
+Lines 311: Replace
+
+installed_version="`defaults read "$installed_versions_path" "$name" 2>/dev/null`"
+with
+
+installed_version="`/usr/libexec/PlistBuddy -c \"print :"$name"\" "$installed_versions_path"  2>/dev/null`"
