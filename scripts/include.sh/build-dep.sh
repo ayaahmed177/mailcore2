@@ -12,7 +12,8 @@ build_git_ios()
   devicearchs="armv7 armv7s arm64"
 
   versions_path="$scriptpath/deps-versions.plist"
-  version="`defaults read "$versions_path" "$name" 2>/dev/null`"
+  # version="`defaults read "$versions_path" "$name" 2>/dev/null`"
+  version="`/usr/libexec/PlistBuddy -c \"print :"$name"\" "$versions_path"  2>/dev/null`"
   version="$(($version+1))"
   if test x$build_for_external = x1 ; then
     version=0
@@ -164,7 +165,8 @@ build_git_osx()
   fi
   
   versions_path="$scriptpath/deps-versions.plist"
-  version="`defaults read "$versions_path" "$name" 2>/dev/null`"
+  # version="`defaults read "$versions_path" "$name" 2>/dev/null`"
+  version="`/usr/libexec/PlistBuddy -c \"print :"$name"\" "$versions_path"  2>/dev/null`"
   version="$(($version+1))"
   if test x$build_for_external = x1 ; then
     version=0
@@ -302,6 +304,7 @@ get_prebuilt_dep()
     return;
   fi
   
+  # installed_version="`defaults read "$installed_versions_path" "$name" 2>/dev/null`"
   installed_version="`defaults read "$installed_versions_path" "$name" 2>/dev/null`"
   if test ! -d "$scriptpath/../Externals/$name" ; then
     installed_version=
@@ -309,7 +312,8 @@ get_prebuilt_dep()
   if test "x$installed_version" = x ; then
     installed_version="none"
   fi
-  version="`defaults read "$versions_path" "$name" 2>/dev/null`"
+  # version="`defaults read "$versions_path" "$name" 2>/dev/null`"
+  version="`/usr/libexec/PlistBuddy -c \"print :"$name"\" "$versions_path"  2>/dev/null`"
 
   echo $name, installed: $installed_version, required: $version
   if test "x$installed_version" = "x$version" ; then
