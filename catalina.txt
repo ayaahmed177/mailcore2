@@ -15,3 +15,5 @@ installed_version="`defaults read "$installed_versions_path" "$name" 2>/dev/null
 with
 
 installed_version="`/usr/libexec/PlistBuddy -c \"print :"$name"\" "$installed_versions_path"  2>/dev/null`"
+
+https://github.com/MailCore/mailcore2/issues/1838#issuecomment-540600398
